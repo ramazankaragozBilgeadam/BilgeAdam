@@ -24,5 +24,29 @@ public class AritmatikApp {
         sonuc=a%b;
         System.out.println("(Mod Alma)Sayının Kalanını bulma işlemi: "+sonuc);
 
+
+        a=a+b;
+        System.out.println("Normal atama: "+a);
+        a=7;
+        a+=b;
+        System.out.println("Aritmatik atama toplama işemi : "+a);
+        a=7;
+        a=a-b;
+        System.out.println("Normal atama: "+a);
+        a=7;
+        a-=b;
+        System.out.println("Aritmatik atama çıkarma işlemi : "+a);
+
+        a=7;
+        a*=b;
+        System.out.println("Aritmatik atama çarpma işlemi : "+a);
+        a=7;
+        a%=b;
+        System.out.println("Aritmatik atama mod alma işlemi : "+a);
+        a=7;
+        a/=b;
+        System.out.println("Aritmatik atama bölme işlemi: "+a);
+
+
     }
 }
