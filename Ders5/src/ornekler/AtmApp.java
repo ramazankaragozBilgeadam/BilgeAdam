@@ -67,10 +67,6 @@ public class AtmApp {
         }while (devamEdilsinMi);
 
 
-
-
-
-
     }
 
 }
