@@ -38,11 +38,17 @@ public class OrneklerApp {
 
     }
 
+    //Dönüş tipi olan ve parametre alan method.
     public static int donusTipiOlanToplamaIslemi(int sayi1,int sayi2){
 
         int sonuc=sayi1+sayi2;
 
         return sonuc;
+    }
+
+
+    public static short test(int sayi1,int sayi2){
+        return (short) (sayi1+sayi2);
     }
 
 }
