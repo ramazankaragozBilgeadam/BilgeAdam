@@ -20,12 +20,34 @@ public class GirilenIfadeDeBelirliHarfSayisiniBulanApp {
         System.out.print("Sayısı bulunacak harfi giriniz: ");
         String harf=input.next();
 
-        /*
+        harf=harf.toLowerCase();
+
+        if (ifade.length()>0){
+
+            char[] karekterler=ifade.toCharArray();
+            int sayac=0;
+
+            for (char karekter:karekterler){
+
+                String a=String.valueOf(karekter);
+
+                /*if (String.valueOf(karekter).equals(harf)){
+
+                }*/
+
+                if (a.equals(harf)){
+                    sayac++;
+                    //sayac=sayac+1;
+                }
+
+            }
+
+            System.out.println("Girilen harf sayı: "+sayac);
 
 
-       *
-         */
-        System.out.println("Girilen harf sayısından şu kadar var: ");
+        }else {
+            System.out.println("Bir string ifade girmeniz gerekmektedir.");
+        }
 
     }
 }

@@ -1,5 +1,7 @@
 package odev;
 
+import java.util.Scanner;
+
 public class DiziMerdivenApp {
 
 
@@ -27,6 +29,50 @@ public class DiziMerdivenApp {
 
 
          */
+
+
+        /*int[][] dizi2d=new int[4][5];
+        *//*dizi2d[0]=new int[5];
+        dizi2d[1]=new int[5];
+        dizi2d[2]=new int[5];
+        dizi2d[3]=new int[5];*//*
+        System.out.println(dizi2d.length);
+        System.out.println("sutun boyutu "+dizi2d[0].length);*/
+
+        Scanner scanner=new Scanner(System.in);
+        System.out.print("Dizi boyutunu giriniz: ");
+        int diziBoyutu=scanner.nextInt();
+
+        char[][] dizi=new char[diziBoyutu][diziBoyutu];
+
+        for (int i=0;i<dizi.length;i++){
+
+            for (int k=0;k<dizi[0].length;k++){
+
+                if (i+k+2>dizi.length){
+                    dizi[i][k]='x';
+                }else {
+                    dizi[i][k]=' ';
+                }
+
+            }
+
+        }
+
+        String deger="";
+
+        for (int i=0;i<dizi.length;i++){
+
+            for (int k=0;k<dizi[0].length;k++){
+                deger=deger+dizi[i][k]+" ";
+            }
+
+            System.out.println(deger);
+            deger="";
+        }
+
+
+
 
     }
 }
