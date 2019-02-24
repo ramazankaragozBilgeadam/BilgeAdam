@@ -50,4 +50,14 @@ public class Personel {
     public void setSicilNumarasi(long sicilNumarasi){
         this.sicilNumarasi=sicilNumarasi;
     }
+
+    @Override
+    public String toString() {
+        return "Personel{" +
+                "ad='" + ad + '\'' +
+                ", soyad='" + soyad + '\'' +
+                ", yas=" + yas +
+                ", sicilNumarasi=" + sicilNumarasi +
+                '}';
+    }
 }

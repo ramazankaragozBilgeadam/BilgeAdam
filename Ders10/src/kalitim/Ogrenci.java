@@ -53,4 +53,13 @@ public class Ogrenci {
         this.okulNumarasi=okulNumarasi;
     }
 
+    @Override
+    public String toString() {
+        return "Ogrenci{" +
+                "ad='" + ad + '\'' +
+                ", soyad='" + soyad + '\'' +
+                ", yas=" + yas +
+                ", okulNumarasi=" + okulNumarasi +
+                '}';
+    }
 }
