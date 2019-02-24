@@ -7,6 +7,15 @@ public class Dikdortgen {
     private double uzunlugu;
 
 
+    protected void cevreHesaplama(){
+
+    }
+
+    void alanHesaplama(){
+
+    }
+
+
     public double getEn(){
         return this.en;
     }

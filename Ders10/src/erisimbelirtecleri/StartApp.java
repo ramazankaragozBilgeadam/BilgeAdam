@@ -17,6 +17,10 @@ public class StartApp {
 
         System.out.println(dikdortgen.toString());
 
+
+        dikdortgen.cevreHesaplama();
+        dikdortgen.alanHesaplama();
+
     }
 
 }
