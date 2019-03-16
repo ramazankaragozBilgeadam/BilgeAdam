@@ -12,7 +12,7 @@ public class DosyaKaldigiYerdenYazdirma {
         try {
             FileWriter fileWriter=new FileWriter(ROOT_FILE,true);
             bufferedWriter=new BufferedWriter(fileWriter);
-            bufferedWriter.write("sakldaskld");
+            bufferedWriter.write("Merhaba ");
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
