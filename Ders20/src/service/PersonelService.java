@@ -44,6 +44,6 @@ public class PersonelService implements IPersonelService<Personel> {
 
     @Override
     public List<Personel> findAll() {
-        return null;
+        return personelDAO.listeGetir();
     }
 }

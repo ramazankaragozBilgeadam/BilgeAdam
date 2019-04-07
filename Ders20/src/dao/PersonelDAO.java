@@ -60,8 +60,7 @@ public class PersonelDAO extends BaseDAO<Personel> {
             PreparedStatement preparedStatement=getConnection().prepareStatement(sorgu);
             ResultSet resultSet=super.execute(preparedStatement);
 
-            if (resultSet!=null&&resultSet.getFetchSize()>0) {
-
+            if (resultSet!=null) {
                 personelList = new ArrayList<>();
 
                 while (resultSet.next()) {

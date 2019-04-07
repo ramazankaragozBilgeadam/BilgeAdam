@@ -18,14 +18,18 @@ public class SorguResultSet {
 
             Statement statement=conn.createStatement();
 
+            //Fetch size set edildiği zaman dataları verilen değer kadar getiriyor.
+            // 4 kayıt var ise kayıtları 2şer 2şer select çekerek getiriyor.
+            statement.setFetchSize(2);
+
             ResultSet resultSet=statement.executeQuery(sorgu);
 
             while (resultSet.next()){
 
                 System.out.println(
                          resultSet.getInt("id")+" "
-                        +resultSet.getString("ad")+" "
-                        +resultSet.getString("soyad")+" "
+                        +resultSet.getString("adi")+" "
+                        +resultSet.getString("soyadi")+" "
                         +resultSet.getString("tc_no")+" "
                         +resultSet.getString("tel")+" "
                         +resultSet.getDate("dogum_tarihi"));

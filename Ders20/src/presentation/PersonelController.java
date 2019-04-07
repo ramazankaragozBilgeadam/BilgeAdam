@@ -3,6 +3,8 @@ package presentation;
 import entity.Personel;
 import service.PersonelService;
 
+import java.util.List;
+
 public class PersonelController {
 
     private PersonelService personelService;
@@ -19,6 +21,20 @@ public class PersonelController {
                 System.err.println("Personel Kayıt Edilemedi.");
             }
         }
+    }
+
+
+    public List<Personel> onPersonelList(){
+
+        List<Personel> personelList=personelService.findAll();
+
+        if (personelList!=null&&personelList.size()>0){
+            System.out.println("Personel Listeleme İşlemi Başarılı.");
+        }else {
+            System.err.println("Personel Listesi bulunamadı.");
+        }
+
+        return personelList;
     }
 
 }

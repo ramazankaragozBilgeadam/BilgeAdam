@@ -3,6 +3,7 @@ package presentation;
 import entity.Personel;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class PersonelView {
@@ -37,6 +38,8 @@ public class PersonelView {
                 case 2:
                     break;
                 case 3:
+                    personelListesiYaz();
+                    flag=true;
                     break;
                 case 4:
                     break;
@@ -55,6 +58,14 @@ public class PersonelView {
 
         } while (flag);
 
+    }
+
+    public void personelListesiYaz(){
+
+        List<Personel> personelList=personelController.onPersonelList();
+        if (personelList!=null&&personelList.size()>0){
+            personelList.stream().forEach(System.out::println);
+        }
     }
 
 
