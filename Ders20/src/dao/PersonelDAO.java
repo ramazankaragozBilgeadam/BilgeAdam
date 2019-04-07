@@ -3,7 +3,9 @@ package dao;
 import entity.Personel;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PersonelDAO extends BaseDAO<Personel> {
@@ -25,7 +27,6 @@ public class PersonelDAO extends BaseDAO<Personel> {
 
             //return executeUpdate(preparedStatement);
             if (executeUpdate(preparedStatement)) {
-                closeConnection();
                 return true;
             }
 
@@ -50,7 +51,40 @@ public class PersonelDAO extends BaseDAO<Personel> {
 
     @Override
     public List<Personel> listeGetir() {
-        return null;
+
+        List<Personel> personelList=null;
+
+        try {
+            String sorgu="select * from public.\"Personel\"";
+            openConnection();
+            PreparedStatement preparedStatement=getConnection().prepareStatement(sorgu);
+            ResultSet resultSet=super.execute(preparedStatement);
+
+            if (resultSet!=null&&resultSet.getFetchSize()>0) {
+
+                personelList = new ArrayList<>();
+
+                while (resultSet.next()) {
+                    Personel personel = new Personel();
+
+                    personel.setId(resultSet.getLong("id"));
+                    personel.setAdi(resultSet.getString("adi"));
+                    personel.setSoyadi(resultSet.getString("soyadi"));
+                    personel.setTel(resultSet.getString("tel"));
+                    personel.setDogumTarihi(resultSet.getDate("dogum_tarihi"));
+                    personel.setTcNo(resultSet.getString("tc_no"));
+
+                    personelList.add(personel);
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeConnection();
+        }
+
+        return personelList;
     }
 
     @Override
