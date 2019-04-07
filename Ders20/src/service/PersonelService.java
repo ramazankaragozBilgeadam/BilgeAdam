@@ -29,11 +29,22 @@ public class PersonelService implements IPersonelService<Personel> {
 
     @Override
     public boolean guncelle(Personel personel) {
+
+        if (personel!=null&&personel.getId()!=null){
+
+            return personelDAO.guncelle(personel);
+        }
+
         return false;
     }
 
     @Override
     public boolean sil(Personel personel) {
+
+        if (personel!=null&&personel.getId()!=null){
+            return personelDAO.sil(personel);
+        }
+
         return false;
     }
 

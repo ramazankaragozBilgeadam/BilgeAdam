@@ -33,28 +33,31 @@ public class PersonelView {
             switch (secenek) {
                 case 1:
                     personelEkleMenu();
-                    flag=true;
+                    flag = true;
                     break;
                 case 2:
                     personelYaz();
-                    flag=true;
+                    flag = true;
                     break;
                 case 3:
                     personelListesiYaz();
-                    flag=true;
+                    flag = true;
                     break;
                 case 4:
+                    personelGuncelleMenu();
+                    flag=true;
                     break;
                 case 5:
+                    personelSil();
+                    flag=true;
                     break;
                 case 0:
-                    flag=false;
+                    flag = false;
                     break;
                 default:
                     System.err.println("Yanlış seçenek!");
-                    flag=true;
+                    flag = true;
                     break;
-
             }
 
 
@@ -62,24 +65,84 @@ public class PersonelView {
 
     }
 
-    public void personelYaz(){
+
+    public void personelSil(){
 
         Scanner scanner=new Scanner(System.in);
-        System.out.print("Personelin id degerini giriniz:");
-        Long deger=scanner.nextLong();
-        Personel personel=personelController.onPersonelById(deger);
 
-        if (personel!=null){
+        System.out.print("Silmek istediniz personelin id degerini giriniz:");
+        Personel personel=new Personel();
+        personel.setId(scanner.nextLong());
+        personelController.onDelete(personel);
+
+
+    }
+
+    public void personelGuncelleMenu() {
+
+        boolean flag = false;
+        int secenek;
+        Scanner scanner = new Scanner(System.in);
+
+        do {
+            System.out.println("Personel güncelleme menüsüne hoş geldiniz..");
+            System.out.println("1-)Güncelle");
+            System.out.println("0-)Üst menüye dön.");
+            System.out.print("Seçiniz:");
+            secenek = scanner.nextInt();
+
+            switch (secenek) {
+                case 1:
+                    flag=true;
+                    Personel personel=new Personel();
+                    System.out.println("Id:");
+                    personel.setId(scanner.nextLong());
+                    System.out.println("Adı:");
+                    personel.setAdi(scanner.next());
+                    System.out.println("Soyadı:");
+                    personel.setSoyadi(scanner.next());
+                    System.out.println("TC Numarası:");
+                    personel.setTcNo(scanner.next());
+                    System.out.println("Telefon Numarası:");
+                    personel.setTel(scanner.next());
+                    System.out.println("Doğum Tarihi");
+                    personel.setDogumTarihi(Date.valueOf(scanner.next()));
+                    personelController.onUpdate(personel);
+
+                    break;
+                case 0:
+                    flag=false;
+                    break;
+                default:
+                    System.out.println("Yanlış seçenek..");
+                    flag=true;
+                    break;
+            }
+
+
+        } while (flag);
+
+
+    }
+
+    public void personelYaz() {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Personelin id degerini giriniz:");
+        Long deger = scanner.nextLong();
+        Personel personel = personelController.onPersonelById(deger);
+
+        if (personel != null) {
             System.out.println(personel);
         }
 
     }
 
 
-    public void personelListesiYaz(){
+    public void personelListesiYaz() {
 
-        List<Personel> personelList=personelController.onPersonelList();
-        if (personelList!=null&&personelList.size()>0){
+        List<Personel> personelList = personelController.onPersonelList();
+        if (personelList != null && personelList.size() > 0) {
             personelList.stream().forEach(System.out::println);
         }
     }
@@ -91,7 +154,7 @@ public class PersonelView {
         int secenek;
         Scanner scanner = new Scanner(System.in);
         do {
-            Personel personel=new Personel();
+            Personel personel = new Personel();
             System.out.println("Personel Ekleme Menusune Hoş Geldiniz.");
             System.out.println("1-)Ekle");
             System.out.println("0-)Bir Üst Menüye Dön.");
@@ -100,7 +163,7 @@ public class PersonelView {
 
             switch (secenek) {
                 case 1:
-                    flag=true;
+                    flag = true;
                     System.out.println("Adı:");
                     personel.setAdi(scanner.next());
                     System.out.println("Soyadı:");

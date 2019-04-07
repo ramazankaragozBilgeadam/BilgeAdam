@@ -41,11 +41,51 @@ public class PersonelDAO extends BaseDAO<Personel> {
 
     @Override
     public boolean guncelle(Personel personel) {
+
+
+        String sorgu="update public.\"Personel\" set adi=?, soyadi=?, tc_no=?, tel=?, dogum_tarihi=? where id=?";
+        try {
+            openConnection();
+            PreparedStatement preparedStatement=getConnection().prepareStatement(sorgu);
+            preparedStatement.setString(1,personel.getAdi());
+            preparedStatement.setString(2,personel.getSoyadi());
+            preparedStatement.setString(3,personel.getTcNo());
+            preparedStatement.setString(4,personel.getTel());
+            preparedStatement.setDate(5,personel.getDogumTarihi());
+            preparedStatement.setLong(6,personel.getId());
+
+            return executeUpdate(preparedStatement);
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeConnection();
+        }
+
         return false;
     }
 
     @Override
     public boolean sil(Personel personel) {
+
+        openConnection();
+
+        String sorgu="delete from public.\"Personel\" where id=?";
+
+        try {
+            PreparedStatement preparedStatement=getConnection().prepareStatement(sorgu);
+            preparedStatement.setLong(1,personel.getId());
+
+            return executeUpdate(preparedStatement);
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeConnection();
+        }
+
         return false;
     }
 

@@ -51,4 +51,22 @@ public class PersonelController {
         }
     }
 
+
+    public void onUpdate(Personel personel){
+
+        if (personelService.guncelle(personel)){
+            System.out.println("Personel güncelleme işlemi başarılı.");
+        }else {
+            System.err.println("Personel güncelleme işlemi başarısız!!");
+        }
+    }
+
+    public void onDelete(Personel personel){
+        if (personelService.sil(personel)){
+            System.out.println("Personel silme işlemi başarılı.");
+        }else {
+            System.out.println("Silme işlemi başarısız!!!");
+        }
+    }
+
 }
