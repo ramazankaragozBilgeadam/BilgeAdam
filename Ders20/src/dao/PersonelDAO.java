@@ -88,6 +88,33 @@ public class PersonelDAO extends BaseDAO<Personel> {
 
     @Override
     public Personel findById(Long id) {
-        return null;
+
+        Personel personel=null;
+        openConnection();
+        String sorgu="select * from public.\"Personel\" where id=?";
+        try {
+            PreparedStatement preparedStatement=getConnection().prepareStatement(sorgu);
+            preparedStatement.setLong(1,id);
+            ResultSet resultSet=execute(preparedStatement);
+
+            if (resultSet!=null){
+                personel=new Personel();
+                while (resultSet.next()){
+                    personel.setId(resultSet.getLong("id"));
+                    personel.setAdi(resultSet.getString("adi"));
+                    personel.setSoyadi(resultSet.getString("soyadi"));
+                    personel.setTel(resultSet.getString("tel"));
+                    personel.setDogumTarihi(resultSet.getDate("dogum_tarihi"));
+                    personel.setTcNo(resultSet.getString("tc_no"));
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeConnection();
+        }
+
+        return personel;
     }
 }

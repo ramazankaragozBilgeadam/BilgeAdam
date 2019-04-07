@@ -39,6 +39,11 @@ public class PersonelService implements IPersonelService<Personel> {
 
     @Override
     public Personel findById(Personel personel) {
+
+        if (personel!=null&&personel.getId()!=null){
+            return personelDAO.findById(personel.getId());
+        }
+
         return null;
     }
 

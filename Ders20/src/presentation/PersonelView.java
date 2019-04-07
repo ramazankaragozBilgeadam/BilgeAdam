@@ -36,6 +36,8 @@ public class PersonelView {
                     flag=true;
                     break;
                 case 2:
+                    personelYaz();
+                    flag=true;
                     break;
                 case 3:
                     personelListesiYaz();
@@ -59,6 +61,20 @@ public class PersonelView {
         } while (flag);
 
     }
+
+    public void personelYaz(){
+
+        Scanner scanner=new Scanner(System.in);
+        System.out.print("Personelin id degerini giriniz:");
+        Long deger=scanner.nextLong();
+        Personel personel=personelController.onPersonelById(deger);
+
+        if (personel!=null){
+            System.out.println(personel);
+        }
+
+    }
+
 
     public void personelListesiYaz(){
 

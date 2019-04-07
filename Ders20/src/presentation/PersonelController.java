@@ -37,4 +37,18 @@ public class PersonelController {
         return personelList;
     }
 
+    public Personel onPersonelById(Long id){
+
+        Personel personel=new Personel();
+        personel.setId(id);
+
+        if ((personel=personelService.findById(personel))!=null){
+            System.out.println("Personel bulundu..");
+            return personel;
+        }else {
+            System.err.println("Personel ne yazıkki bulunamadı!!");
+            return null;
+        }
+    }
+
 }
