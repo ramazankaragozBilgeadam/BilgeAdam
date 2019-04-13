@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class StartApp {
 
@@ -30,10 +32,25 @@ public class StartApp {
         //İnput componentini oluşturuyoruz kullanıcıdan bir değer almak için.
         JTextField jTextField=new JTextField(20);
 
+        JButton jButton=new JButton("Kaydet");
+
+        jButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Buton submit(tıklandığında) olduğun da yapılacak işlemi ele alır.
+
+                if (!jTextField.getText().equals("")) {
+                    System.out.println(jTextField.getText());
+                    //jTextField.setText("");
+                }
+                Pencere pencere=new Pencere(new JLabel(jTextField.getText()));
+            }
+        });
 
         //Label componentini ekliyoruz.
         panel.add(jLabel);
         panel.add(jTextField);
+        panel.add(jButton);
         ilkPencere.add(panel);
 
 
