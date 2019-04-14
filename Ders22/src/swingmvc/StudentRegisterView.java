@@ -140,4 +140,8 @@ public class StudentRegisterView extends JFrame {
     public JButton getListButton() {
         return listButton;
     }
+
+    public JList getStudentJList() {
+        return studentJList;
+    }
 }
