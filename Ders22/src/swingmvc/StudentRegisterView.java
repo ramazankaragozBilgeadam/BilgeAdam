@@ -17,12 +17,16 @@ public class StudentRegisterView extends JFrame {
 
     private JButton saveButton;
     private JButton listButton;
+    private JList studentJList;
+
+    private JScrollPane jScrollPane;
 
     private JPanel namePanel;
     private JPanel surnamePanel;
     private JPanel addressPanel;
     private JPanel phonePanel;
     private JPanel buttonPanel;
+    private JPanel listPanel;
 
     public StudentRegisterView(){
 
@@ -73,12 +77,27 @@ public class StudentRegisterView extends JFrame {
         buttonPanel.add(saveButton);
         buttonPanel.add(listButton);
 
+
+        //Datalarımızı listelemek için JList bileşenini oluşturuyorum.
+        studentJList=new JList();
+        //JList bileşenime scroll özellği eklemek için scroll pane oluşturuyorum.
+        jScrollPane=new JScrollPane();
+        //JScrollpane bileşeninin viewPort methodu yardımıyla scroll özelliğini veriyorum.
+        jScrollPane.getViewport().add(studentJList);
+
+        listPanel=new JPanel();
+        listPanel.setLayout(new BoxLayout(listPanel,BoxLayout.LINE_AXIS));
+        //JListimizi görüntülemek için scrollpane bileşenini panele ekliyoruz.
+        listPanel.add(jScrollPane);
+
         //Containerlarımızı penceremize ekliyoruz
         this.add(namePanel);
         this.add(surnamePanel);
         this.add(phonePanel);
         this.add(addressPanel);
         this.add(buttonPanel);
+        this.add(listPanel);
+        this.pack();
 
     }
 

@@ -31,4 +31,8 @@ public class StudentRegisterModel {
         }
     }
 
+    public List<Student> getStudentList(){
+        return this.studentList;
+    }
+
 }
