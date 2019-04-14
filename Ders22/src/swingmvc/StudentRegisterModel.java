@@ -7,6 +7,7 @@ public class StudentRegisterModel {
 
     private Student student;
     private List<Student> studentList=new ArrayList<>();
+    private Student selectedStudent;
 
 
     public void onSaveButtonAction(String name,String surname,String phone,String address){
@@ -35,4 +36,32 @@ public class StudentRegisterModel {
         return this.studentList;
     }
 
+
+    public void deleteStudent(Student student){
+
+        if (student!=null&&studentList.size()>0){
+
+            studentList.remove(student);
+            //studentList.remove(selectedStudent);
+        }
+
+    }
+
+
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Student getSelectedStudent() {
+        return selectedStudent;
+    }
+
+    public void setSelectedStudent(Student selectedStudent) {
+        this.selectedStudent = selectedStudent;
+    }
 }

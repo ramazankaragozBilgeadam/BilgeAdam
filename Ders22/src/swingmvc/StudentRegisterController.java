@@ -1,6 +1,8 @@
 package swingmvc;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -58,6 +60,58 @@ public class StudentRegisterController {
         });
 
 
+        view.getStudentJList().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent event) {
+
+                if (!event.getValueIsAdjusting()) {
+
+                    if (view.getStudentJList().getSelectedValue() instanceof Student) {
+                        Student student = (Student) view.getStudentJList().getSelectedValue();
+                        //System.out.println(student);
+                        model.setSelectedStudent(student);
+                    }
+                }
+
+            }
+        });
+
+
+        view.getRemoveButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.deleteStudent(model.getSelectedStudent());
+                onStudentList();
+            }
+        });
+
+
+
+    }
+
+
+
+    public void onStudentList(){
+
+
+        List<Student> studentList=model.getStudentList();
+
+        if (studentList.size()>0){
+
+            DefaultListModel defaultListModel=new DefaultListModel();
+
+            for (Student student:studentList){
+                defaultListModel.addElement(student);
+            }
+
+            view.getStudentJList().setModel(defaultListModel);
+        }else if (studentList.size()==0){
+
+            DefaultListModel defaultListModel=new DefaultListModel();
+            defaultListModel.addElement(new String("Listede eleman kalmadı."));
+            view.getStudentJList().setModel(defaultListModel);
+
+        }
 
     }
 

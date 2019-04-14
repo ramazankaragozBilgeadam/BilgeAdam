@@ -17,6 +17,7 @@ public class StudentRegisterView extends JFrame {
 
     private JButton saveButton;
     private JButton listButton;
+    private JButton removeButton;
     private JList studentJList;
 
     private JScrollPane jScrollPane;
@@ -50,6 +51,7 @@ public class StudentRegisterView extends JFrame {
 
         this.saveButton=new JButton("Save");
         this.listButton=new JButton("List");
+        this.removeButton=new JButton("Remove");
 
 
         //Containerlarımızı oluşturuyoruz
@@ -76,6 +78,7 @@ public class StudentRegisterView extends JFrame {
         buttonPanel.setLayout(new BoxLayout(buttonPanel,BoxLayout.LINE_AXIS));
         buttonPanel.add(saveButton);
         buttonPanel.add(listButton);
+        buttonPanel.add(removeButton);
 
 
         //Datalarımızı listelemek için JList bileşenini oluşturuyorum.
@@ -143,5 +146,9 @@ public class StudentRegisterView extends JFrame {
 
     public JList getStudentJList() {
         return studentJList;
+    }
+
+    public JButton getRemoveButton() {
+        return removeButton;
     }
 }
